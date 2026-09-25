@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Citizen Feedback — PRAHARI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/citizen-feedback.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="index.html" class="wordmark">PRAHARI</a>
+    <nav class="nav">
+      <a href="index.html#anomaly-detection">Anomaly Detection</a>
+      <a href="index.html#risk-scoring">Risk Scoring</a>
+      <a href="geotagging.html">Geotagging</a>
+      <a href="citizen-feedback.html" class="active">Citizen Feedback</a>
+      <a href="mp-performance.html">MP Performance</a>
+    </nav>
+  </header>
+
+  <section class="section" style="opacity:1; transform:none;">
+    <h2>Citizen Feedback</h2>
+    <p class="lede">Report a concern about a specific MPLADS work. Your identity is recorded so reports can be followed up on, and feeds into the project's risk signal alongside official data.</p>
+
+    <form id="feedback-form" class="feedback-form" novalidate>
+      <div class="form-row">
+        <label for="citizen-name">Your full name <span class="req">*</span></label>
+        <input type="text" id="citizen-name" name="citizenName" required placeholder="As per a valid ID">
+      </div>
+
+      <div class="form-row two-col">
+        <div>
+          <label for="citizen-contact">Phone or email</label>
+          <input type="text" id="citizen-contact" name="citizenContact" placeholder="Optional, for follow-up">
+        </div>
+        <div>
+          <label for="state-select">State <span class="req">*</span></label>
+          <select id="state-select" name="state" required>
+            <option value="" disabled selected>Select state</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row two-col">
+        <div>
+          <label for="mp-select">Member of Parliament <span class="req">*</span></label>
+          <select id="mp-select" name="mp" required>
+            <option value="" disabled selected>Select MP</option>
+          </select>
+        </div>
+        <div>
+          <label for="work-select">Work / Project <span class="req">*</span></label>
+          <select id="work-select" name="work" required>
+            <option value="" disabled selected>Select the work</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="issue-type">Type of concern</label>
+        <select id="issue-type" name="issueType">
+          <option value="Delay">Work is delayed</option>
+          <option value="Quality">Poor quality of work</option>
+          <option value="Fund misuse">Suspected fund misuse</option>
+          <option value="Not started">Sanctioned but not started</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="description">Describe the issue <span class="req">*</span></label>
+        <textarea id="description" name="description" rows="4" required placeholder="What have you observed at the site?"></textarea>
+      </div>
+
+      <button type="submit" class="btn-refresh">Submit report</button>
+      <p id="form-msg" class="form-msg" hidden></p>
+    </form>
+
+    <h3 class="reports-heading">Submitted reports</h3>
+    <div id="reports-list" class="reports-list"></div>
+  </section>
+
+  <footer class="site-footer">
+    <span>PRAHARI — Team KORUPSI SENTINELS</span>
+    <span>Reports feed into anomaly and risk scoring as an independent signal</span>
+  </footer>
+
+  <script src="js/data/mockProjects.js"></script>
+  <script src="js/data/mockMPs.js"></script>
+  <script src="js/citizen-feedback.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+/* ============================================
+   PRAHARI — shared base styles
+   ============================================ */
+
+:root {
+  /* Core palette — drawn from the subject, not decoration */
+  --navy-950: #08192E;
+  --navy-800: #123457;
+  --blue-600: #1F5FA8;
+  --blue-500: #2E6FC0;
+  --paper-50:  #F5F8FB;
+  --paper-100: #EAF0F6;
+  --line: #D7E1EA;
+  --ink-900: #0E1B26;
+  --ink-600: #47606F;
+
+  /* Functional risk colors — used consistently everywhere risk appears */
+  --risk-low:  #1AA6A0;
+  --risk-mod:  #D98E3D;
+  --risk-high: #C0392B;
+
+  --font-display: "Newsreader", Georgia, serif;
+  --font-body: "IBM Plex Sans", Arial, sans-serif;
+
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink-900);
+  background: var(--paper-50);
+  line-height: 1.5;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--navy-950);
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.9rem;
+  margin-bottom: 0.4rem;
+}
+
+p { color: var(--ink-600); }
+
+a { color: var(--blue-600); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* -------- Splash -------- */
+.splash {
+  position: fixed;
+  inset: 0;
+  background: var(--navy-950);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 999;
+  cursor: pointer;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.splash.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.splash-mark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  letter-spacing: 0.02em;
+  animation: rise 0.9s ease both;
+}
+.splash-sub {
+  font-size: 0.9rem;
+  color: #9FB6CC;
+  animation: rise 0.9s ease 0.15s both;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .splash-mark, .splash-sub { animation: none; }
+}
+
+/* -------- Top nav -------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2rem;
+  background: var(--navy-950);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.wordmark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: #fff;
+}
+.nav { display: flex; gap: 1.6rem; flex-wrap: wrap; }
+.nav a {
+  color: #C9D9E8;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.nav a:hover { color: #fff; text-decoration: none; border-bottom: 1px solid #fff; }
+.nav a.active { color: #fff; border-bottom: 1px solid var(--blue-500); }
+
+/* -------- Generic section rhythm -------- */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.section.in-view { opacity: 1; transform: translateY(0); }
+.lede { max-width: 60ch; margin-bottom: 2rem; }
+
+/* -------- Footer -------- */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: var(--navy-950);
+  color: #9FB6CC;
+  font-size: 0.85rem;
+}
+
+/* -------- Severity badges (shared across pages) -------- */
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+}
+.badge.low  { background: var(--risk-low); }
+.badge.moderate { background: var(--risk-mod); }
+.badge.high { background: var(--risk-high); }
+/* Aliases for MP performance tiers — same color language, different label set */
+.badge.good  { background: var(--risk-low); }
+.badge.worse { background: var(--risk-high); }
+
+@media (max-width: 720px) {
+  .topbar { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+  .nav { gap: 1rem; }
+}

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MP Performance — PRAHARI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/mp-performance.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="index.html" class="wordmark">PRAHARI</a>
+    <nav class="nav">
+      <a href="index.html#anomaly-detection">Anomaly Detection</a>
+      <a href="index.html#risk-scoring">Risk Scoring</a>
+      <a href="geotagging.html">Geotagging</a>
+      <a href="citizen-feedback.html">Citizen Feedback</a>
+      <a href="mp_performance.html" class="active">MP Performance</a>
+    </nav>
+  </header>
+
+  <section class="section" style="opacity:1; transform:none;">
+    <h2>MP Performance</h2>
+    <p class="lede">MPs are grouped by a composite of completion rate, fund utilization, average project risk and citizen complaints — recalculated as new data comes in, not a fixed one-time label.</p>
+
+    <div class="controls">
+      <div class="tier-filters" id="tier-filters">
+        <button class="tier-btn active" data-tier="all">All</button>
+        <button class="tier-btn" data-tier="good">Good</button>
+        <button class="tier-btn" data-tier="moderate">Moderate</button>
+        <button class="tier-btn" data-tier="worse">Worse</button>
+      </div>
+      <select id="year-select" class="year-select">
+        <option value="2025">This year (2025)</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+      </select>
+    </div>
+
+    <div id="mp-grid" class="mp-grid"></div>
+
+    <div id="mp-detail" class="mp-detail" hidden>
+      <div class="detail-head">
+        <h3 id="detail-name"></h3>
+        <button id="detail-close" class="link-btn" type="button">Close</button>
+      </div>
+      <div class="detail-body">
+        <canvas id="mp-trend-chart" height="220"></canvas>
+        <div id="detail-stats" class="detail-stats"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span>PRAHARI — Team KORUPSI SENTINELS</span>
+    <span>Tiers recompute automatically as new project data is verified</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/data/mockMPs.js"></script>
+  <script src="js/mp-performance.js"></script>
+</body>
+</html>
